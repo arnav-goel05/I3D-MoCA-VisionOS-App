@@ -1,0 +1,483 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A76DE74A2DFADF5200EFE0A1 /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = A76DE7492DFADF5200EFE0A1 /* RealityKitContent */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A76DE75D2DFADF5300EFE0A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A76DE73C2DFADF5200EFE0A1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A76DE7432DFADF5200EFE0A1;
+			remoteInfo = "I3D-stroke-rehab";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A76DE7442DFADF5200EFE0A1 /* I3D-stroke-rehab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I3D-stroke-rehab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A76DE7482DFADF5200EFE0A1 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		A76DE75C2DFADF5300EFE0A1 /* I3D-stroke-rehabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "I3D-stroke-rehabTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A76DE7622DFADF5300EFE0A1 /* Exceptions for "I3D-stroke-rehab" folder in "I3D-stroke-rehab" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A76DE7432DFADF5200EFE0A1 /* I3D-stroke-rehab */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		A76DE7462DFADF5200EFE0A1 /* I3D-stroke-rehab */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A76DE7622DFADF5300EFE0A1 /* Exceptions for "I3D-stroke-rehab" folder in "I3D-stroke-rehab" target */,
+			);
+			path = "I3D-stroke-rehab";
+			sourceTree = "<group>";
+		};
+		A76DE75F2DFADF5300EFE0A1 /* I3D-stroke-rehabTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "I3D-stroke-rehabTests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A76DE7412DFADF5200EFE0A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A76DE74A2DFADF5200EFE0A1 /* RealityKitContent in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A76DE7592DFADF5300EFE0A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A76DE73B2DFADF5200EFE0A1 = {
+			isa = PBXGroup;
+			children = (
+				A76DE7462DFADF5200EFE0A1 /* I3D-stroke-rehab */,
+				A76DE7472DFADF5200EFE0A1 /* Packages */,
+				A76DE75F2DFADF5300EFE0A1 /* I3D-stroke-rehabTests */,
+				A76DE7452DFADF5200EFE0A1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A76DE7452DFADF5200EFE0A1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A76DE7442DFADF5200EFE0A1 /* I3D-stroke-rehab.app */,
+				A76DE75C2DFADF5300EFE0A1 /* I3D-stroke-rehabTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A76DE7472DFADF5200EFE0A1 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				A76DE7482DFADF5200EFE0A1 /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A76DE7432DFADF5200EFE0A1 /* I3D-stroke-rehab */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A76DE7632DFADF5300EFE0A1 /* Build configuration list for PBXNativeTarget "I3D-stroke-rehab" */;
+			buildPhases = (
+				A76DE7402DFADF5200EFE0A1 /* Sources */,
+				A76DE7412DFADF5200EFE0A1 /* Frameworks */,
+				A76DE7422DFADF5200EFE0A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A76DE7462DFADF5200EFE0A1 /* I3D-stroke-rehab */,
+			);
+			name = "I3D-stroke-rehab";
+			packageProductDependencies = (
+				A76DE7492DFADF5200EFE0A1 /* RealityKitContent */,
+			);
+			productName = "I3D-stroke-rehab";
+			productReference = A76DE7442DFADF5200EFE0A1 /* I3D-stroke-rehab.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A76DE75B2DFADF5300EFE0A1 /* I3D-stroke-rehabTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A76DE7682DFADF5300EFE0A1 /* Build configuration list for PBXNativeTarget "I3D-stroke-rehabTests" */;
+			buildPhases = (
+				A76DE7582DFADF5300EFE0A1 /* Sources */,
+				A76DE7592DFADF5300EFE0A1 /* Frameworks */,
+				A76DE75A2DFADF5300EFE0A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A76DE75E2DFADF5300EFE0A1 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A76DE75F2DFADF5300EFE0A1 /* I3D-stroke-rehabTests */,
+			);
+			name = "I3D-stroke-rehabTests";
+			packageProductDependencies = (
+			);
+			productName = "I3D-stroke-rehabTests";
+			productReference = A76DE75C2DFADF5300EFE0A1 /* I3D-stroke-rehabTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A76DE73C2DFADF5200EFE0A1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					A76DE7432DFADF5200EFE0A1 = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					A76DE75B2DFADF5300EFE0A1 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = A76DE7432DFADF5200EFE0A1;
+					};
+				};
+			};
+			buildConfigurationList = A76DE73F2DFADF5200EFE0A1 /* Build configuration list for PBXProject "I3D-stroke-rehab" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A76DE73B2DFADF5200EFE0A1;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = A76DE7452DFADF5200EFE0A1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A76DE7432DFADF5200EFE0A1 /* I3D-stroke-rehab */,
+				A76DE75B2DFADF5300EFE0A1 /* I3D-stroke-rehabTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A76DE7422DFADF5200EFE0A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A76DE75A2DFADF5300EFE0A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A76DE7402DFADF5200EFE0A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A76DE7582DFADF5300EFE0A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A76DE75E2DFADF5300EFE0A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A76DE7432DFADF5200EFE0A1 /* I3D-stroke-rehab */;
+			targetProxy = A76DE75D2DFADF5300EFE0A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		A76DE7642DFADF5300EFE0A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92Y987QD5H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.I3D-stroke-rehab";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+			};
+			name = Debug;
+		};
+		A76DE7652DFADF5300EFE0A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92Y987QD5H;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.I3D-stroke-rehab";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+			};
+			name = Release;
+		};
+		A76DE7662DFADF5300EFE0A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 92Y987QD5H;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = xros;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Debug;
+		};
+		A76DE7672DFADF5300EFE0A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 92Y987QD5H;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = xros;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Release;
+		};
+		A76DE7692DFADF5300EFE0A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92Y987QD5H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.I3D-stroke-rehabTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I3D-stroke-rehab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/I3D-stroke-rehab";
+				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Debug;
+		};
+		A76DE76A2DFADF5300EFE0A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92Y987QD5H;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.I3D-stroke-rehabTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/I3D-stroke-rehab.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/I3D-stroke-rehab";
+				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A76DE73F2DFADF5200EFE0A1 /* Build configuration list for PBXProject "I3D-stroke-rehab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A76DE7662DFADF5300EFE0A1 /* Debug */,
+				A76DE7672DFADF5300EFE0A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A76DE7632DFADF5300EFE0A1 /* Build configuration list for PBXNativeTarget "I3D-stroke-rehab" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A76DE7642DFADF5300EFE0A1 /* Debug */,
+				A76DE7652DFADF5300EFE0A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A76DE7682DFADF5300EFE0A1 /* Build configuration list for PBXNativeTarget "I3D-stroke-rehabTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A76DE7692DFADF5300EFE0A1 /* Debug */,
+				A76DE76A2DFADF5300EFE0A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A76DE7492DFADF5200EFE0A1 /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A76DE73C2DFADF5200EFE0A1 /* Project object */;
+}
