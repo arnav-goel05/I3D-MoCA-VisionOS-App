@@ -1,51 +1,58 @@
 //
-//  AbstractionView.swift
+//  OrrientationView.swift
 //  I3D-stroke-rehab
+//
+//  Created by Interactive 3D Design on 13/6/25.
+//
 
 import SwiftUI
 
-struct AbstractionView: View {
+struct OrrientationView: View {
     
     struct TaskItem {
         let title: String
         let question: String
-        let imageOne: String
-        let imageTwo: String
     }
-    
-    private let taskItems: [TaskItem] = [
-        TaskItem(
-            title: "Task 1",
-            question: "train - bicycle",
-            imageOne: "train",
-            imageTwo: "bicycle",
-        ),
-        TaskItem(
-            title: "Task 2",
-            question: "watch - ruler",
-            imageOne: "watch",
-            imageTwo: "ruler",
-        )
-    ]
     
     @State private var currentIndex = 0
     @State private var userInput = ""
     @State private var backgroundColor: Color = .blue.opacity(0.2)
+    
+    private let taskItems: [TaskItem] = [
+        TaskItem(
+            title: "Task 1",
+            question: "What date is it today? (e.g. 1, 2)",
+        ),
+        TaskItem(
+            title: "Task 2",
+            question: "What month is it today? (e.g. January, February)",
+        ),
+        TaskItem(
+            title: "Task 3",
+            question: "What year is it today (e.g. 2001, 2002) ",
+        ),
+        TaskItem(
+            title: "Task 4",
+            question: "What day is it today (e.g. Monday, Tuesday)",
+        ),
+        TaskItem(
+            title: "Task 5",
+            question: "Where are you right now? (e.g. office, home)",
+        ),
+        TaskItem(
+            title: "Task 6",
+            question: "What country are you in right now? (India, China)",
+        )
+    ]
     
     var body: some View {
         ZStack {
             backgroundColor
                 .ignoresSafeArea()
             
-            VStack(spacing: 20) {
-                
-                Text("Abstraction")
+            VStack {
+                Text("Orientation")
                     .font(.system(size: 40, weight: .bold, design: .rounded))
-                
-                Text("Similarity between e.g. banana – orange = fruit")
-                    .font(.system(size: 35, weight: .semibold, design: .rounded))
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal)
                 
                 Spacer()
                 
@@ -56,8 +63,8 @@ struct AbstractionView: View {
                             .foregroundColor(.green)
                             .padding(.bottom, 30)
                         
-                        NavigationLink(destination: OrrientationView()) {
-                            Text("Next Activity")
+                        NavigationLink(destination: ContentView()) {
+                            Text("Restart Assessment")
                                 .font(.system(size: 35, weight: .semibold, design: .rounded))
                                 .cornerRadius(10)
                                 .padding()
@@ -66,25 +73,10 @@ struct AbstractionView: View {
                 } else {
                     let task = taskItems[currentIndex]
                     
-                    HStack(spacing: 35) {
-                        VStack (spacing: 20) {
-                            Image(task.imageOne)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .cornerRadius(20)
-                            Text("Train")
-                                .font(.system(size: 30, weight: .medium, design: .rounded))
-                        }
-                        VStack (spacing: 20) {
-                            Image(task.imageTwo)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .cornerRadius(20)
-                            Text("Bicycle")
-                                .font(.system(size: 30, weight: .medium, design: .rounded))
-                        }
-                        .padding(20)
-                    }
+                    Text("\(task.title): \(task.question)")
+                        .font(.system(size: 35, weight: .regular, design: .rounded))
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 60)
                     
                     HStack(spacing: 40) {
                         TextField("Type your answer…", text: $userInput)
@@ -111,13 +103,11 @@ struct AbstractionView: View {
                                 .cornerRadius(12)
                         }
                     }
+                    
+                    Spacer()
                 }
-                
-                Spacer()
             }
-            .padding()
-            .cornerRadius(20)
-            .padding()
+    
         }
     }
     

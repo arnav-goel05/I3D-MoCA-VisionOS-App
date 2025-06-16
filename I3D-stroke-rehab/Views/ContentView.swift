@@ -15,11 +15,11 @@ struct ContentView: View {
         NavigationStack {
             VStack(spacing: 40) {
                 Text("Welcome to the future of Stroke Rehab!")
-                    .font(.largeTitle)
+                    .font(.system(size: 40, weight: .bold, design: .rounded))
                 NavigationLink(destination: AbstractionView())
                 {
                     Text("Start Session")
-                        .font(.title3)
+                        .font(.system(size: 35, weight: .semibold, design: .rounded))
                         .padding()
                         .cornerRadius(10)
                 }

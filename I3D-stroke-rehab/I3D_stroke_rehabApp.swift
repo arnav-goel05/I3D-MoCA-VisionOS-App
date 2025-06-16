@@ -17,6 +17,7 @@ struct I3D_stroke_rehabApp: App {
             ContentView()
                 .environment(appModel)
         }
+        .defaultSize(width: 1520, height: 950)
     }
 
 }
