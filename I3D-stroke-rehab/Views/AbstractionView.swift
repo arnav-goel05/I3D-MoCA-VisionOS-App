@@ -4,6 +4,12 @@
 
 import SwiftUI
 
+struct TaskItem {
+    let title: String
+    let question: String
+    let correctAnswer: String
+    var isCorrect: Bool
+}
 struct AbstractionView: View {
     
     struct TaskItem {
