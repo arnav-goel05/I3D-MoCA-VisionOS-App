@@ -10,26 +10,23 @@ import RealityKit
 import RealityKitContent
 
 struct ContentView: View {
-
     var body: some View {
-        NavigationStack {
-            VStack(spacing: 40) {
-                Text("Welcome to the future of Stroke Rehab!")
-                    .font(.system(size: 40, weight: .bold, design: .rounded))
-                NavigationLink(destination: AbstractionView())
-                {
-                    Text("Start Session")
-                        .font(.system(size: 35, weight: .semibold, design: .rounded))
-                        .padding()
-                        .cornerRadius(10)
+        ZStack {
+            NavigationStack {
+                VStack(spacing: 50) {
+                    Text("Montreal Cognitive Assessment (MoCA)")
+                        .font(.system(size: 40, weight: .bold, design: .rounded))
+                    NavigationLink(destination: HelpView())
+                    {
+                        Text("Start Test")
+                            .font(.system(size: 35, weight: .semibold, design: .rounded))
+                            .frame(width: 300, height: 60)
+                            .padding()
+                            .cornerRadius(10)
+                    }
                 }
+                .padding()
             }
-            .padding()
         }
     }
-}
-
-#Preview(windowStyle: .automatic) {
-    ContentView()
-        .environment(AppModel())
 }

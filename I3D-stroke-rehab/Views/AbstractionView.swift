@@ -60,13 +60,16 @@ struct AbstractionView: View {
                         Text("🎉 You’re done!")
                             .font(.system(size: 35, weight: .bold, design: .rounded))
                             .foregroundColor(.green)
-                            .padding(.bottom, 30)
+                            .padding(.bottom, 50)
+                            .padding([.leading, .trailing], 100)
+                            .multilineTextAlignment(.center)
                         
                         NavigationLink(destination: OrrientationView()) {
                             Text("Next Activity")
                                 .font(.system(size: 35, weight: .semibold, design: .rounded))
-                                .cornerRadius(10)
+                                .frame(width: 300, height: 60)
                                 .padding()
+                                .cornerRadius(10)
                         }
                     }
                 } else {
@@ -98,6 +101,7 @@ struct AbstractionView: View {
                             .frame(width: 600)
                             .submitLabel(.done)
                             .controlSize(.large)
+                            .accessibilityLabel("Answer")
                         
                         Button(action: {
                             validateAnswer(for: task)
@@ -105,15 +109,6 @@ struct AbstractionView: View {
                             Text("Submit")
                                 .font(.system(size: 30, weight: .semibold, design: .rounded))
                                 .frame(width: 200, height: 60)
-                                .cornerRadius(12)
-                        }
-                        
-                        Button(action: {
-                            userInput = ""
-                        }) {
-                            Text("Clear Text")
-                                .font(.system(size: 30, weight: .semibold, design: .rounded))
-                                .frame(width: 300, height: 60)
                                 .cornerRadius(12)
                         }
                     }
