@@ -22,7 +22,6 @@
 
 /* Begin PBXFileReference section */
 		A76DE7442DFADF5200EFE0A1 /* I3D-stroke-rehab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "I3D-stroke-rehab.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A76DE7482DFADF5200EFE0A1 /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 		A76DE75C2DFADF5300EFE0A1 /* I3D-stroke-rehabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "I3D-stroke-rehabTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -37,6 +36,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		A70D56E82E0308D900EA9F98 /* Packages */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Packages;
+			sourceTree = "<group>";
+		};
 		A76DE7462DFADF5200EFE0A1 /* I3D-stroke-rehab */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -75,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				A76DE7462DFADF5200EFE0A1 /* I3D-stroke-rehab */,
-				A76DE7472DFADF5200EFE0A1 /* Packages */,
+				A70D56E82E0308D900EA9F98 /* Packages */,
 				A76DE75F2DFADF5300EFE0A1 /* I3D-stroke-rehabTests */,
 				A76DE7452DFADF5200EFE0A1 /* Products */,
 			);
@@ -88,14 +92,6 @@
 				A76DE75C2DFADF5300EFE0A1 /* I3D-stroke-rehabTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		A76DE7472DFADF5200EFE0A1 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				A76DE7482DFADF5200EFE0A1 /* RealityKitContent */,
-			);
-			path = Packages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
