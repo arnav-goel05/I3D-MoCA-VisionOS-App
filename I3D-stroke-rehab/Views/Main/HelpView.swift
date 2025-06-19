@@ -22,7 +22,7 @@ struct HelpView: View {
                         .titleTextStyle()
                     Text("All The Best!")
                         .titleTextStyle()
-                    NavigationLink(destination: MemoryView())
+                    NavigationLink(destination: ExecutiveView())
                     {
                         Text("Proceed")
                             .buttonTextStyle()

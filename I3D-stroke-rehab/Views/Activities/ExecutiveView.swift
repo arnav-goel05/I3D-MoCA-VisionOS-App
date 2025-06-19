@@ -29,7 +29,7 @@ struct ExecutiveView: View {
                 Spacer()
 
                 if manager.currentIndex >= 1 {
-                    CompletionView(completionText: "🎉 You're done!", buttonText: "Next Task", destination: OrrientationView())
+                    CompletionView(completionText: "🎉 You're done!", buttonText: "Next Task", destination: MemoryView())
                 } else {
                     DrawingCanvas(isErasing: $isErasing, eraserType: $eraserType, lineWidth: $lineWidth)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
