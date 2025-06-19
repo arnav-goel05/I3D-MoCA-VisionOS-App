@@ -24,7 +24,7 @@ struct ExecutiveView: View {
                 .ignoresSafeArea()
 
             VStack {
-                TaskHeaderView(title: "Executive Function", subtitle: "Draw a clock showing ten past eleven")
+                TaskHeaderView(title: "Executive", subtitle: "Draw a clock showing ten past eleven")
 
                 Spacer()
 
