@@ -1,5 +1,5 @@
 //
-//  OrrientationView.swift
+//  OrientationView.swift
 //  I3D-stroke-rehab
 //
 //  Created by Interactive 3D Design on 13/6/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OrrientationView: View {
+struct OrientationView: View {
     
     @StateObject private var manager = TaskManager()
     

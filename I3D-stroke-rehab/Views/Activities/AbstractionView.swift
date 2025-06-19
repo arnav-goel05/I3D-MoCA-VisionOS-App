@@ -25,7 +25,7 @@ struct AbstractionView: View {
                 Spacer()
                 
                 if manager.currentIndex >= tasks.count {
-                    CompletionView(completionText: "🎉 You’re done!", buttonText: "Next Task", destination: ExecutiveView())
+                    CompletionView(completionText: "🎉 You’re done!", buttonText: "Next Task", destination: OrientationView())
                 } else {
                     let task = tasks[manager.currentIndex]
                     

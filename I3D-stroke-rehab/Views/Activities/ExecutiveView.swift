@@ -8,15 +8,10 @@
 import SwiftUI
 
 struct ExecutiveView: View {
-    enum EraserType {
-        case pixel
-        case line
-    }
-
     @StateObject private var manager = TaskManager()
     @State private var isErasing = false
-    @State private var eraserType: EraserType = .pixel
     @State private var lineWidth: Double = 10.0
+    @State private var lines = [Line]()
 
     var body: some View {
         ZStack {
@@ -31,7 +26,7 @@ struct ExecutiveView: View {
                 if manager.currentIndex >= 1 {
                     CompletionView(completionText: "🎉 You're done!", buttonText: "Next Task", destination: MemoryView())
                 } else {
-                    DrawingCanvas(isErasing: $isErasing, eraserType: $eraserType, lineWidth: $lineWidth)
+                    DrawingCanvas(isErasing: $isErasing, lineWidth: $lineWidth, lines: $lines)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(Color.white)
                         .cornerRadius(10)
@@ -46,21 +41,19 @@ struct ExecutiveView: View {
 
                         Button(action: {
                             isErasing = true
-                            eraserType = .pixel
                         }) {
                             Image(systemName: "eraser")
                                 .font(.title)
                         }
-                        .foregroundColor(isErasing && eraserType == .pixel ? .blue : .gray)
+                        .foregroundColor(isErasing ? .blue : .gray)
 
                         Button(action: {
-                            isErasing = true
-                            eraserType = .line
+                            lines.removeAll()
                         }) {
                             Image(systemName: "trash")
                                 .font(.title)
                         }
-                        .foregroundColor(isErasing && eraserType == .line ? .blue : .gray)
+                        .foregroundColor(.red)
 
                         Slider(value: $lineWidth, in: 1...20) {
                             Text("Width")
@@ -95,10 +88,13 @@ struct Line {
 
 struct DrawingCanvas: View {
     @Binding var isErasing: Bool
-    @Binding var eraserType: ExecutiveView.EraserType
     @Binding var lineWidth: Double
-    @State private var lines = [Line]()
+    @Binding var lines: [Line]
     @State private var currentPoints = [CGPoint]()
+
+    private var effectiveLineWidth: Double {
+        isErasing ? lineWidth * 4 : lineWidth
+    }
 
     var body: some View {
         Canvas { context, size in
@@ -110,46 +106,21 @@ struct DrawingCanvas: View {
 
             var currentPath = Path()
             currentPath.addLines(currentPoints)
-            let currentColor = isErasing && eraserType == .pixel ? Color.white : Color.black
-            context.stroke(currentPath, with: .color(currentColor), style: StrokeStyle(lineWidth: lineWidth, lineCap: .round, lineJoin: .round))
+            let currentColor = isErasing ? Color.white : Color.black
+            context.stroke(currentPath, with: .color(currentColor), style: StrokeStyle(lineWidth: effectiveLineWidth, lineCap: .round, lineJoin: .round))
         }
         .gesture(
             DragGesture(minimumDistance: 0, coordinateSpace: .local)
                 .onChanged {
-                    if !(isErasing && eraserType == .line) {
-                        currentPoints.append($0.location)
-                    }
+                    currentPoints.append($0.location)
                 }
                 .onEnded { value in
-                    if isErasing && eraserType == .line {
-                        deleteLine(at: value.location)
-                    } else {
-                        let color = isErasing ? Color.white : Color.black
-                        let newLine = Line(points: currentPoints, color: color, lineWidth: lineWidth)
-                        lines.append(newLine)
-                        currentPoints = []
-                    }
+                    let color = isErasing ? Color.white : Color.black
+                    let newLine = Line(points: currentPoints, color: color, lineWidth: effectiveLineWidth)
+                    lines.append(newLine)
+                    currentPoints = []
                 }
         )
-    }
-
-    private func deleteLine(at point: CGPoint) {
-        var lineIndexToDelete: Int? = nil
-        var minDistance: CGFloat = .infinity
-
-        for (index, line) in lines.enumerated() {
-            for p in line.points {
-                let distance = point.distance(to: p)
-                if distance < minDistance {
-                    minDistance = distance
-                    lineIndexToDelete = index
-                }
-            }
-        }
-
-        if let index = lineIndexToDelete, minDistance < 20 {
-            lines.remove(at: index)
-        }
     }
 }
 
