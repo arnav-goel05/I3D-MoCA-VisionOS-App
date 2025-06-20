@@ -64,7 +64,7 @@ struct VisuospatialView: View {
     var body: some View {
         VStack {
             Text("Connect the nodes in ascending order, alternating between numbers and letters (1-A-2-B...).")
-                .font(.title)
+                .font(.largeTitle)
                 .padding()
 
             ZStack {
