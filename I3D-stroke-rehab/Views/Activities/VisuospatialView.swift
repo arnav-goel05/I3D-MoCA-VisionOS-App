@@ -68,6 +68,18 @@ struct VisuospatialView: View {
                 .padding()
 
             ZStack {
+                if lines.isEmpty {
+                    if let node1 = nodes.first(where: { $0.id == "1" }),
+                       let nodeA = nodes.first(where: { $0.id == "A" }),
+                       let node2 = nodes.first(where: { $0.id == "2" }) {
+                        
+                        Arrow(start: node1.position, end: nodeA.position)
+                            .stroke(Color.gray, style: StrokeStyle(lineWidth: 5, lineCap: .round, dash: [15, 15]))
+                        Arrow(start: nodeA.position, end: node2.position)
+                            .stroke(Color.gray, style: StrokeStyle(lineWidth: 5, lineCap: .round, dash: [15, 15]))
+                    }
+                }
+                
                 ForEach(lines) { line in
                     Arrow(start: line.start, end: line.end)
                         .stroke(Color.black, lineWidth: 5)
