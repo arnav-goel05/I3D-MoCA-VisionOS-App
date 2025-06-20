@@ -45,16 +45,16 @@ struct Arrow: Shape {
 
 struct VisuospatialView: View {
     let nodes: [Node] = [
-        Node(id: "1", position: CGPoint(x: 650, y: 385)),
-        Node(id: "A", position: CGPoint(x: 850, y: 185)),
-        Node(id: "2", position: CGPoint(x: 1000, y: 235)),
-        Node(id: "B", position: CGPoint(x: 850, y: 335)),
-        Node(id: "3", position: CGPoint(x: 1000, y: 585)),
-        Node(id: "C", position: CGPoint(x: 600, y: 635)),
-        Node(id: "4", position: CGPoint(x: 800, y: 535)),
-        Node(id: "D", position: CGPoint(x: 500, y: 535)),
-        Node(id: "5", position: CGPoint(x: 450, y: 270)),
-        Node(id: "E", position: CGPoint(x: 650, y: 130))
+        Node(id: "1", position: CGPoint(x: 650, y: 350)),
+        Node(id: "A", position: CGPoint(x: 850, y: 150)),
+        Node(id: "2", position: CGPoint(x: 1000, y: 200)),
+        Node(id: "B", position: CGPoint(x: 850, y: 300)),
+        Node(id: "3", position: CGPoint(x: 1000, y: 550)),
+        Node(id: "C", position: CGPoint(x: 600, y: 600)),
+        Node(id: "4", position: CGPoint(x: 800, y: 500)),
+        Node(id: "D", position: CGPoint(x: 500, y: 500)),
+        Node(id: "5", position: CGPoint(x: 450, y: 250)),
+        Node(id: "E", position: CGPoint(x: 650, y: 100))
     ]
 
     @State private var lines: [ConnectingLine] = []
