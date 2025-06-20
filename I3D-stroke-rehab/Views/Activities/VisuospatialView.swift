@@ -154,11 +154,13 @@ struct VisuospatialView: View {
                     selectedNodes.removeAll()
                 }) {
                     HStack {
+                        Spacer()
                         Image(systemName: "arrow.counterclockwise")
                         Text("Reset")
+                        Spacer()
                     }
+                    .buttonTextStyle()
                 }
-                .largeIconButtonTextStyle()
                 
                 NavigationLink(destination: ExecutiveView()) {
                     Text("Next Task")
