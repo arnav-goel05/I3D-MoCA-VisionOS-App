@@ -56,6 +56,22 @@ extension View {
     }
 }
 
+struct LargeIconButtonTextStyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 45, weight: .semibold, design: .rounded))
+            .frame(width: 350, height: 100)
+            .padding()
+            .cornerRadius(10)
+    }
+}
+
+extension View {
+    func largeIconButtonTextStyle() -> some View {
+        self.modifier(LargeIconButtonTextStyle())
+    }
+}
+
 extension View {
     func titleTextStyle() -> some View {
         self.modifier(TitleTextStyle())
