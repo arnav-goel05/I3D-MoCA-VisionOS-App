@@ -19,64 +19,80 @@ struct ExecutiveView: View {
                 .ignoresSafeArea()
 
             VStack {
-                TaskHeaderView(title: "Executive", subtitle: "Draw a clock showing ten past eleven")
-
+                Text("Draw a clock showing ten past eleven")
+                .font(.largeTitle)
+                .padding()
                 Spacer()
 
                 if manager.currentIndex >= 1 {
                     CompletionView(completionText: "🎉 You're done!", buttonText: "Next Task", destination: MemoryView())
                 } else {
-                    DrawingCanvas(isErasing: $isErasing, lineWidth: $lineWidth, lines: $lines)
+                        DrawingCanvas(isErasing: $isErasing, lineWidth: $lineWidth, lines: $lines)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(Color.white)
                         .cornerRadius(10)
                         .padding()
 
-                    HStack(spacing: 20) {
-                        Button(action: { isErasing = false }) {
-                            Image(systemName: "pencil")
-                                .font(.title)
-                        }
-                        .foregroundColor(!isErasing ? .blue : .gray)
+                                HStack(spacing: 20) {
+                                    Button(action: { isErasing = false }) {
+                                        Image(systemName: "pencil")
+                                            .font(.title)
+                                    }
+                                    .foregroundColor(!isErasing ? .blue : .gray)
 
-                        Button(action: {
-                            isErasing = true
-                        }) {
-                            Image(systemName: "eraser")
-                                .font(.title)
-                        }
-                        .foregroundColor(isErasing ? .blue : .gray)
+                                    Button(action: {
+                                        isErasing = true
+                                    }) {
+                                        Image(systemName: "eraser")
+                                            .font(.title)
+                                    }
+                                    .foregroundColor(isErasing ? .blue : .gray)
 
                         Button(action: {
                             lines.removeAll()
                         }) {
                             Image(systemName: "trash")
-                                .font(.title)
-                        }
-                        .foregroundColor(.red)
+                                        .font(.title)
+                            }
+                            .foregroundColor(.red)
 
                         Slider(value: $lineWidth, in: 1...20) {
                             Text("Width")
-                        }
-                        .frame(width: 200)
-                        
+                            }
+                            .frame(width: 200)
+
                         Text(String(format: "%.0f", lineWidth))
-                            .frame(width: 35, alignment: .leading)
-                    }
+                        .frame(width: 35, alignment: .leading)
+                                }
                     .padding()
 
-                    Button(action: {
-                        manager.nextTask(total: 1)
-                    }) {
-                        Text("Submit")
-                            .buttonTextStyle()
-                    }
-                    .padding()
+                                HStack {
+                                    Button(action: {
+                                        // Navigate to 3D Painting view
+                                        manager.show3DPainting = true
+                                    }) {
+                                        Text("3D Painting")
+                                            .buttonTextStyle()
+                                    }
+                                    .padding(.trailing, 10)
+
+                                    Button(action: {
+                                        manager.nextTask(total: 1)
+                                    }) {
+                                        Text("Submit")
+                                            .buttonTextStyle()
+                                    }
+                                }
+                                .padding()
+                                .navigationDestination(isPresented: $manager.show3DPainting) {
+                                    _3DPaintView()
+                                }
                 }
 
                 Spacer()
             }
         }
+        .navigationTitle("Executive")
     }
 }
 

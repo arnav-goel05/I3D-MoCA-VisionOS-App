@@ -60,6 +60,7 @@ struct VisuospatialView: View {
     @State private var lines: [ConnectingLine] = []
     @State private var currentLine: ConnectingLine?
     @State private var selectedNodes: [Node] = []
+    @State private var navigateToNextTask = false
 
     var body: some View {
         VStack {
@@ -178,6 +179,11 @@ struct VisuospatialView: View {
                     Text("Next Task")
                         .buttonTextStyle()
                 }
+                .disabled(false)
+                .navigationDestination(isPresented: $navigateToNextTask) {
+                    _3DPaintView()
+                }
+
             }
             .padding()
         }

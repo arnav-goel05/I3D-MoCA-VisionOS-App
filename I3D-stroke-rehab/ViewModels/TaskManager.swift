@@ -11,6 +11,7 @@ class TaskManager: ObservableObject {
     @Published var currentIndex: Int = 0
     @Published var userInput: String = ""
     @Published var backgroundColor: Color = .blue.opacity(0.2)
+    @Published var show3DPainting: Bool = false
 
     func nextTask(total: Int) {
         currentIndex += 1
