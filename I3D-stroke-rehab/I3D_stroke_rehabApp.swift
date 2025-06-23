@@ -20,7 +20,7 @@ struct I3D_stroke_rehabApp: App {
         .defaultSize(CGSize(width: 1520, height: 1000))
         
         WindowGroup(id: "progress-bar") {
-            ProgressBarView()
+            ProgressBarView(currentStep: 2, totalSteps: 8)
         }
         .defaultSize(CGSize(width:500, height: 1000))
         .defaultWindowPlacement { content, context in
