@@ -78,6 +78,7 @@ struct _3DPaintView: View {
                         anchors.append(latestRightHand)
                     }
 
+                    var newPose: SIMD3<Float>?
                     for anchor in anchors {
                         guard let handSkeleton = anchor.handSkeleton else {
                             continue
@@ -88,7 +89,19 @@ struct _3DPaintView: View {
 
                         let pinchThreshold: Float = 0.05
                         if length(thumbPos - indexPos) < pinchThreshold {
-                            lastIndexPose = indexPos
+                            newPose = indexPos
+                            break
+                        }
+                    }
+                    
+                    DispatchQueue.main.async {
+                        let wasPinched = lastIndexPose != nil
+                        let isPinched = newPose != nil
+                        
+                        lastIndexPose = newPose
+                        
+                        if wasPinched && !isPinched {
+                            canvas.finishStroke()
                         }
                     }
                 }))
@@ -102,7 +115,7 @@ struct _3DPaintView: View {
                     }
                 })
                 .onEnded({ _ in
-                    canvas.finishStroke()
+                    // Stroke is now finished when the pinch is released.
                 })
             )
             
