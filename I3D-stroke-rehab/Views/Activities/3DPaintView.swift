@@ -80,29 +80,28 @@ struct _3DPaintView: View {
 
                     var newPose: SIMD3<Float>?
                     for anchor in anchors {
-                        guard let handSkeleton = anchor.handSkeleton else {
-                            continue
-                        }
-
+                        guard let handSkeleton = anchor.handSkeleton else { continue }
                         let thumbPos = Transform(matrix: anchor.originFromAnchorTransform * handSkeleton.joint(.thumbTip).anchorFromJointTransform).translation
                         let indexPos = Transform(matrix: anchor.originFromAnchorTransform * handSkeleton.joint(.indexFingerTip).anchorFromJointTransform).translation
-
-                        let pinchThreshold: Float = 0.05
-                        if length(thumbPos - indexPos) < pinchThreshold {
+                        if length(thumbPos - indexPos) < 0.05 {
                             newPose = indexPos
                             break
                         }
                     }
-                    
+
                     DispatchQueue.main.async {
                         let wasPinched = lastIndexPose != nil
                         let isPinched = newPose != nil
                         
-                        lastIndexPose = newPose
-                        
-                        if wasPinched && !isPinched {
+                        // If pinch is active, add point to stroke
+                        if let pose = newPose {
+                            canvas.addPoint(pose)
+                        } else if wasPinched && !isPinched {
+                            // Pinch released: finish current stroke
                             canvas.finishStroke()
                         }
+                        // Update last pinch state
+                        lastIndexPose = newPose
                     }
                 }))
             }
