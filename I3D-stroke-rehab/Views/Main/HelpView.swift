@@ -11,6 +11,10 @@ import SwiftUI
 
 struct HelpView: View {
     @State private var backgroundColor: Color = .blue.opacity(0.2)
+    @Environment(\.dismissWindow) private var dismissWindow
+    @Environment(\.openWindow) private var openWindow
+    @State private var navigate = false
+    
     var body: some View {
         ZStack {
             backgroundColor
@@ -22,11 +26,20 @@ struct HelpView: View {
                         .titleTextStyle()
                     Text("All The Best!")
                         .titleTextStyle()
-                    NavigationLink(destination: VisuospatialView())
-                    {
+                    Button(action: {
+                        dismissWindow(id: "intro-video")
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                            openWindow(id: "progress-bar")
+                            navigate = true
+                        }
+                        navigate = true
+                    }) {
                         Text("Proceed")
                             .buttonTextStyle()
                     }
+                }
+                .navigationDestination(isPresented: $navigate) {
+                    VisuospatialView()
                 }
                 .padding(150)
             }
