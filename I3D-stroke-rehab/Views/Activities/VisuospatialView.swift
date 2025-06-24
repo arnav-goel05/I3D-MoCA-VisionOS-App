@@ -65,9 +65,8 @@ struct VisuospatialView: View {
 
     var body: some View {
         VStack {
-            Text("Connect the nodes in ascending order, alternating between numbers and letters (1-A-2-B...).")
-                .font(.largeTitle)
-                .padding()
+            
+            TaskHeaderView(title: "Visuospatial", subtitle: "Connect the nodes in ascending order, alternating between numbers and letters (1-A-2-B...).")
 
             ZStack {
                 if lines.isEmpty {
@@ -188,7 +187,6 @@ struct VisuospatialView: View {
             }
             .padding()
         }
-        .navigationTitle("Visuospatial")
     }
 
     private func node(at point: CGPoint) -> Node? {

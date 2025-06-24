@@ -17,7 +17,7 @@ struct CompletionView<Destination: View>: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
+            VStack(spacing: 50) {
                 Text(completionText)
                     .titleTextStyle()
 

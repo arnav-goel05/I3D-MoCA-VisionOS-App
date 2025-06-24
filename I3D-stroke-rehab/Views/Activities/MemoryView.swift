@@ -10,7 +10,7 @@ import SwiftUI
 struct MemoryView: View {
     
     @EnvironmentObject var activityManager: ActivityManager
-    @StateObject private var manager = TaskManager()
+    @StateObject private var manager = TaskManager(total: 4)
     
     let listOfWords = "Face Silk Church Rose Red"
     
@@ -28,7 +28,7 @@ struct MemoryView: View {
                 if manager.currentIndex == 4 {
                     CompletionView(completionText: "🎉 You’re done! Remember these 5 words, we will be asking them later on in the test.", buttonText: "Next Task", onButtonTapped: {
                         activityManager.nextActivity(index: 3)
-                    }, destination: AbstractionView())
+                    }, destination: AttentionView())
                 } else if manager.currentIndex == 2 {
                     Text("Lets do it once again! Here are a list of words. Try your best to remember them all for now and later on in the test.")
                         .subtitleTextStyle()
@@ -54,7 +54,7 @@ struct MemoryView: View {
                             .subtitleTextStyle()
                         
                         AnswerInputView(title: "Type your answer…", userInput: $manager.userInput) {
-                            manager.nextTask(total: 4)
+                            manager.nextTask()
                         }
                     }
                 } else {

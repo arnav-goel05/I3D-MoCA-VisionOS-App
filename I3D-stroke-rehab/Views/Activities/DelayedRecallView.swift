@@ -2,7 +2,7 @@ import SwiftUI
 
 struct DelayedRecallView: View {
     
-    @StateObject private var manager = TaskManager()
+    @StateObject private var manager = TaskManager(total: 3)
     @EnvironmentObject var activityManager: ActivityManager
     
     private let correctWords = ["Face", "Silk", "Church", "Rose", "Red"]

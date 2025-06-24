@@ -6,7 +6,7 @@ import SwiftUI
 
 struct AbstractionView: View {
     
-    @StateObject private var manager = TaskManager()
+    @StateObject private var manager = TaskManager(total: 2)
     @EnvironmentObject var activityManager: ActivityManager
     
     private let tasks: [TaskItem] = [
@@ -51,7 +51,7 @@ struct AbstractionView: View {
                     }
                     
                     AnswerInputView(title: "Type your answer…", userInput: $manager.userInput) {
-                        manager.nextTask(total: tasks.count)
+                        manager.nextTask()
                     }
                 }
                 

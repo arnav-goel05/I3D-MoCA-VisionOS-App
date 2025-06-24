@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ExecutiveView: View {
-    @StateObject private var manager = TaskManager()
+    @StateObject private var manager = TaskManager(total: 1)
     @EnvironmentObject var activityManager: ActivityManager
     
     @State private var isErasing = false
@@ -21,9 +21,9 @@ struct ExecutiveView: View {
                 .ignoresSafeArea()
 
             VStack {
-                Text("Draw a clock showing ten past eleven")
-                .font(.largeTitle)
-                .padding()
+                
+                TaskHeaderView(title: "Executive", subtitle: "Draw a clock showing ten past eleven.")
+                
                 Spacer()
 
                 if manager.currentIndex >= 1 {
@@ -81,7 +81,7 @@ struct ExecutiveView: View {
                                     .padding(.trailing, 10)
 
                                     Button(action: {
-                                        manager.nextTask(total: 1)
+                                        manager.nextTask()
                                     }) {
                                         Text("Submit")
                                             .buttonTextStyle()
@@ -96,7 +96,6 @@ struct ExecutiveView: View {
                 Spacer()
             }
         }
-        .navigationTitle("Executive")
     }
 }
 

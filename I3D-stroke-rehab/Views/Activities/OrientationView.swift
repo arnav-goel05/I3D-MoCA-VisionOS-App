@@ -9,7 +9,8 @@ import SwiftUI
 
 struct OrientationView: View {
     
-    @StateObject private var manager = TaskManager()
+    @StateObject private var manager = TaskManager(total: 6)
+    @EnvironmentObject var activityManager: ActivityManager
     
     private let tasks: [TaskItem] = [
         TaskItem(title: "Task 1", question: "What date is it today? (e.g. 1, 2)", imageOne: nil, imageTwo: nil),
@@ -32,6 +33,7 @@ struct OrientationView: View {
                 
                 if manager.currentIndex >= tasks.count {
                     CompletionView(completionText: "🎉 You’re done!", buttonText: "Restart Assessment", onButtonTapped: {
+                        activityManager.nextActivity(index: 8)
                     }, destination: ContentView())
                 } else {
                     let task = tasks[manager.currentIndex]
@@ -41,7 +43,7 @@ struct OrientationView: View {
                         .padding(.bottom, 100)
                     
                     AnswerInputView(title: "Type your answer…", userInput: $manager.userInput) {
-                        manager.nextTask(total: tasks.count)
+                        manager.nextTask()
                     }
             
                 }
