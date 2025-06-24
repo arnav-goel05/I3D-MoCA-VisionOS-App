@@ -27,11 +27,12 @@ struct OrientationView: View {
             
             VStack {
                 TaskHeaderView(title: "Orientation", subtitle: nil)
-                
+    
                 Spacer()
                 
                 if manager.currentIndex >= tasks.count {
-                    CompletionView(completionText: "🎉 You’re done!", buttonText: "Restart Assessment", destination: ContentView())
+                    CompletionView(completionText: "🎉 You’re done!", buttonText: "Restart Assessment", onButtonTapped: {
+                    }, destination: ContentView())
                 } else {
                     let task = tasks[manager.currentIndex]
                     

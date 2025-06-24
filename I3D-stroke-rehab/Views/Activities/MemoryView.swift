@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MemoryView: View {
     
+    @EnvironmentObject var activityManager: ActivityManager
     @StateObject private var manager = TaskManager()
     
     let listOfWords = "Face Silk Church Rose Red"
@@ -25,7 +26,9 @@ struct MemoryView: View {
                 Spacer()
                 
                 if manager.currentIndex == 4 {
-                    CompletionView(completionText: "🎉 You’re done! Remember these 5 words, we will be asking them later on in the test.", buttonText: "Next Task", destination: AbstractionView())
+                    CompletionView(completionText: "🎉 You’re done! Remember these 5 words, we will be asking them later on in the test.", buttonText: "Next Task", onButtonTapped: {
+                        activityManager.nextActivity(index: 3)
+                    }, destination: AbstractionView())
                 } else if manager.currentIndex == 2 {
                     Text("Lets do it once again! Here are a list of words. Try your best to remember them all for now and later on in the test.")
                         .subtitleTextStyle()

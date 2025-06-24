@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ExecutiveView: View {
     @StateObject private var manager = TaskManager()
+    @EnvironmentObject var activityManager: ActivityManager
+    
     @State private var isErasing = false
     @State private var lineWidth: Double = 10.0
     @State private var lines = [Line]()
@@ -25,7 +27,9 @@ struct ExecutiveView: View {
                 Spacer()
 
                 if manager.currentIndex >= 1 {
-                    CompletionView(completionText: "🎉 You're done!", buttonText: "Next Task", destination: MemoryView())
+                    CompletionView(completionText: "🎉 You're done!", buttonText: "Next Task", onButtonTapped: {
+                        activityManager.nextActivity(index: 1)
+                    }, destination: MemoryView())
                 } else {
                         DrawingCanvas(isErasing: $isErasing, lineWidth: $lineWidth, lines: $lines)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)

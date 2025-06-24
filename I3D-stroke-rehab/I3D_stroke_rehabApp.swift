@@ -10,17 +10,18 @@ import SwiftUI
 @main
 struct I3D_stroke_rehabApp: App {
 
-    @State private var appModel = AppModel()
+    @StateObject private var activityManager = ActivityManager()
 
     var body: some Scene {
         WindowGroup(id: "main") {
             ContentView()
-                .environment(appModel)
+                .environmentObject(activityManager)
         }
         .defaultSize(CGSize(width: 1520, height: 1000))
         
         WindowGroup(id: "progress-bar") {
-            ProgressBarView(currentStep: 2, totalSteps: 8)
+            ProgressBarView()
+                .environmentObject(activityManager)
         }
         .defaultSize(CGSize(width:500, height: 1000))
         .defaultWindowPlacement { content, context in
@@ -33,6 +34,7 @@ struct I3D_stroke_rehabApp: App {
         
         WindowGroup(id: "intro-video") {
             IntroVideoView()
+                .environmentObject(activityManager)
         }
         .defaultSize(CGSize(width:500, height: 950))
         .defaultWindowPlacement { content, context in

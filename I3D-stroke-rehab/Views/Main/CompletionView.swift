@@ -10,17 +10,31 @@ import SwiftUI
 struct CompletionView<Destination: View>: View {
     let completionText: String
     let buttonText: String
+    let onButtonTapped: () -> Void
     let destination: Destination
-    
+
+    @State private var isPresented = false
+
     var body: some View {
         NavigationStack {
-            Text(completionText)
-                .titleTextStyle()
-                .padding(.bottom, 20)
-            
-            NavigationLink(destination: destination) {
-                Text(buttonText)
-                    .buttonTextStyle()
+            VStack(spacing: 20) {
+                Text(completionText)
+                    .titleTextStyle()
+
+                Button(
+                    action: {
+                        onButtonTapped()
+                        isPresented = true
+                    },
+                    label: {
+                        Text(buttonText)
+                            .buttonTextStyle()
+                    }
+                )
+            }
+            .padding()
+            .navigationDestination(isPresented: $isPresented) {
+                destination
             }
         }
     }

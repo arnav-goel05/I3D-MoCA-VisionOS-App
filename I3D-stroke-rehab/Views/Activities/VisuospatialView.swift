@@ -61,6 +61,7 @@ struct VisuospatialView: View {
     @State private var currentLine: ConnectingLine?
     @State private var selectedNodes: [Node] = []
     @State private var navigateToNextTask = false
+    @EnvironmentObject var activityManager: ActivityManager
 
     var body: some View {
         VStack {

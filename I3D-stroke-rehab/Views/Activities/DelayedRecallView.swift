@@ -3,6 +3,7 @@ import SwiftUI
 struct DelayedRecallView: View {
     
     @StateObject private var manager = TaskManager()
+    @EnvironmentObject var activityManager: ActivityManager
     
     private let correctWords = ["Face", "Silk", "Church", "Rose", "Red"]
     private let categoryCues: [String: String] = [
@@ -40,7 +41,9 @@ struct DelayedRecallView: View {
                 
                 if finalRecallComplete {
                     
-                    CompletionView(completionText: "🎉 You’re done for this part of the test", buttonText: "Next Task", destination: OrientationView())
+                    CompletionView(completionText: "🎉 You’re done for this part of the test", buttonText: "Next Task", onButtonTapped: {
+                        activityManager.nextActivity(index: 7)
+                    }, destination: OrientationView())
                     
                 } else {
                     Text(currentPrompt())
@@ -135,9 +138,4 @@ struct DelayedRecallView: View {
         default: return ""
         }
     }
-}
-
-
-#Preview {
-    DelayedRecallView()
 }

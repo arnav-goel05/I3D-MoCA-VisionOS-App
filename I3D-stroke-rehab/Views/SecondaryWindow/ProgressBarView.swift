@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ProgressBarView: View {
-    let currentStep: Int
-    let totalSteps: Int
+    
+    @EnvironmentObject var activityManager: ActivityManager
+    let totalSteps = 8
 
     private var progress: Double {
         guard totalSteps > 0 else { return 0 }
-        return min(max(Double(currentStep) / Double(totalSteps), 0), 1)
+        return min(max(Double(activityManager.currentActivityIndex) / Double(totalSteps), 0), 1)
     }
 
     var body: some View {
@@ -46,7 +47,7 @@ struct ProgressBarView: View {
             }
             .aspectRatio(1/4, contentMode: .fit)
             
-            Text("Step \(currentStep) of \(totalSteps)")
+            Text("Step \(activityManager.currentActivityIndex) of \(totalSteps)")
                 .titleTextStyle()
                 .padding(.top, 8)
         }
