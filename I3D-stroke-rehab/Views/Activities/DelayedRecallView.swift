@@ -36,15 +36,19 @@ struct DelayedRecallView: View {
             
             VStack(spacing: 30) {
                 TaskHeaderView(title: "Delayed Recall", subtitle: stageTitle())
+                    .titleTextStyle()
                 
                 Spacer()
                 
                 if finalRecallComplete {
-                    
-                    CompletionView(completionText: "🎉 You’re done for this part of the test", buttonText: "Next Task", onButtonTapped: {
-                        activityManager.nextActivity(index: 7)
-                    }, destination: OrientationView())
-                    
+                    CompletionView(
+                        completionText: "🎉 You’re done for this part of the test",
+                        buttonText: "Next Task",
+                        onButtonTapped: {
+                            activityManager.nextActivity(index: 7)
+                        },
+                        destination: OrientationView()
+                    )
                 } else {
                     Text(currentPrompt())
                         .subtitleTextStyle()
@@ -53,27 +57,30 @@ struct DelayedRecallView: View {
                         TextField("Your answer...", text: $input)
                             .textFieldStyle(.roundedBorder)
                             .padding(.horizontal)
+                            .regularTextStyle()
                         
                         Button("Submit") {
                             handleSubmit()
                         }
                         .buttonTextStyle()
-                        
                     } else {
                         // Multiple choice stage
                         let word = correctWords[currentWordIndex]
-                        Picker("Select the correct word", selection: $input) {
-                            ForEach(multipleChoices[word] ?? [], id: \.self) { option in
-                                Text(option).tag(option)
+                        VStack(spacing: 20) {
+                            Picker("Select the correct word", selection: $input) {
+                                ForEach(multipleChoices[word] ?? [], id: \.self) { option in
+                                    Text(option).tag(option)
+                                }
                             }
+                            .pickerStyle(SegmentedPickerStyle())
+                            .padding(.horizontal)
+                            .regularTextStyle()
+                            
+                            Button("Submit") {
+                                handleSubmit()
+                            }
+                            .buttonTextStyle()
                         }
-                        .pickerStyle(SegmentedPickerStyle())
-                        .padding(.horizontal)
-                        
-                        Button("Submit") {
-                            handleSubmit()
-                        }
-                        .buttonTextStyle()
                     }
                 }
                 
@@ -90,7 +97,6 @@ struct DelayedRecallView: View {
         let expected = correctWords[currentWordIndex]
         let trimmedInput = input.trimmingCharacters(in: .whitespacesAndNewlines).capitalized
         
-        // Correct at this stage
         if trimmedInput == expected {
             if recallStage == 0 {
                 recalledWithoutCue.append(expected)
@@ -99,12 +105,10 @@ struct DelayedRecallView: View {
             }
             moveToNextWord()
         } else {
-            // Incorrect, move to next stage for the same word
             if recallStage < 2 {
                 recallStage += 1
                 input = ""
             } else {
-                // After 3rd try, move on without recalling
                 moveToNextWord()
             }
         }
@@ -121,7 +125,6 @@ struct DelayedRecallView: View {
     
     private func currentPrompt() -> String {
         let word = correctWords[currentWordIndex]
-        
         switch recallStage {
         case 0: return "Try to recall word \(currentWordIndex + 1) without any hints."
         case 1: return "Hint: \(categoryCues[word] ?? "")"
