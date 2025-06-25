@@ -175,6 +175,16 @@ struct VisuospatialView: View {
                     .buttonTextStyle()
                 }
                 
+                Button(action: {
+                    // 3D button action
+                }) {
+                    Text("3D")
+                        .font(.system(size: 24, weight: .bold))
+                        .foregroundColor(.white)
+                        .frame(width: 80, height: 80)
+                        .background(Color.clear)
+                }
+                
                 NavigationLink(destination: ExecutiveView()) {
                     Text("Next Task")
                         .buttonTextStyle()
