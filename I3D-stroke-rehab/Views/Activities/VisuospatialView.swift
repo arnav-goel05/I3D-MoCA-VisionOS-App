@@ -207,7 +207,7 @@ struct VisuospatialView: View {
                         case .opened:
                             showImmersiveSpace = true
                             // Simply dismiss the windows
-                            dismissWindow(id: "MainWindow")
+                            dismissWindow(id: "main")
                             dismissWindow(id: "progress-bar")
                             print("Entering immersive space...")
                         case .error, .userCancelled:

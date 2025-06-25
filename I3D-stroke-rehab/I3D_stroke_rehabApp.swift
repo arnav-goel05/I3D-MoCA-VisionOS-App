@@ -13,7 +13,7 @@ struct I3D_stroke_rehabApp: App {
     @StateObject private var activityManager = ActivityManager()
 
     var body: some Scene {
-        WindowGroup(id: "MainWindow") {
+        WindowGroup(id: "main") {
             ContentView()
                 .environmentObject(activityManager)
         }
