@@ -61,6 +61,55 @@ struct VisuospatialView: View {
     @State private var currentLine: ConnectingLine?
     @State private var selectedNodes: [Node] = []
     @State private var navigateToNextTask = false
+    @State private var showImmersiveSpace = false
+    
+    @Environment(\.openImmersiveSpace) var openImmersiveSpace
+    @Environment(\.dismissWindow) var dismissWindow
+    @Environment(\.openWindow) var openWindow
+
+    // Computed properties to break down complex expressions
+    private var demoArrows: some View {
+        Group {
+            if lines.isEmpty {
+                let node1 = nodes.first(where: { $0.id == "1" })
+                let nodeA = nodes.first(where: { $0.id == "A" })
+                let node2 = nodes.first(where: { $0.id == "2" })
+                
+                if let node1 = node1, let nodeA = nodeA, let node2 = node2 {
+                    Arrow(start: node1.position, end: nodeA.position)
+                        .stroke(Color.gray, style: StrokeStyle(lineWidth: 5, lineCap: .round, dash: [15, 15]))
+                    Arrow(start: nodeA.position, end: node2.position)
+                        .stroke(Color.gray, style: StrokeStyle(lineWidth: 5, lineCap: .round, dash: [15, 15]))
+                }
+            }
+        }
+    }
+    
+    private var drawnLines: some View {
+        ForEach(lines) { line in
+            Arrow(start: line.start, end: line.end)
+                .stroke(Color.black, lineWidth: 5)
+        }
+    }
+    
+    private var currentLineView: some View {
+        Group {
+            if let currentLine = currentLine {
+                let angle = atan2(currentLine.end.y - currentLine.start.y, currentLine.end.x - currentLine.start.x)
+                let nodeRadius: CGFloat = 45
+                let shortenedStart = CGPoint(
+                    x: currentLine.start.x + nodeRadius * cos(angle),
+                    y: currentLine.start.y + nodeRadius * sin(angle)
+                )
+                
+                Path { path in
+                    path.move(to: shortenedStart)
+                    path.addLine(to: currentLine.end)
+                }
+                .stroke(Color.gray, lineWidth: 3)
+            }
+        }
+    }
 
     var body: some View {
         VStack {
@@ -69,33 +118,9 @@ struct VisuospatialView: View {
                 .padding()
 
             ZStack {
-                if lines.isEmpty {
-                    if let node1 = nodes.first(where: { $0.id == "1" }),
-                       let nodeA = nodes.first(where: { $0.id == "A" }),
-                       let node2 = nodes.first(where: { $0.id == "2" }) {
-                        
-                        Arrow(start: node1.position, end: nodeA.position)
-                            .stroke(Color.gray, style: StrokeStyle(lineWidth: 5, lineCap: .round, dash: [15, 15]))
-                        Arrow(start: nodeA.position, end: node2.position)
-                            .stroke(Color.gray, style: StrokeStyle(lineWidth: 5, lineCap: .round, dash: [15, 15]))
-                    }
-                }
-                
-                ForEach(lines) { line in
-                    Arrow(start: line.start, end: line.end)
-                        .stroke(Color.black, lineWidth: 5)
-                }
-
-                if let currentLine = currentLine {
-                    Path { path in
-                        let angle = atan2(currentLine.end.y - currentLine.start.y, currentLine.end.x - currentLine.start.x)
-                        let nodeRadius: CGFloat = 45
-                        let shortenedStart = CGPoint(x: currentLine.start.x + nodeRadius * cos(angle), y: currentLine.start.y + nodeRadius * sin(angle))
-                        path.move(to: shortenedStart)
-                        path.addLine(to: currentLine.end)
-                    }
-                    .stroke(Color.gray, lineWidth: 3)
-                }
+                demoArrows
+                drawnLines
+                currentLineView
                 
                 ForEach(nodes) { node in
                     ZStack {
@@ -176,7 +201,20 @@ struct VisuospatialView: View {
                 }
                 
                 Button(action: {
-                    // 3D button action
+                    Task {
+                        switch await openImmersiveSpace(id: "ImmersiveSpace") {
+                        case .opened:
+                            showImmersiveSpace = true
+                            // Simply dismiss the windows
+                            dismissWindow(id: "MainWindow")
+                            dismissWindow(id: "progress-bar")
+                            print("Entering immersive space...")
+                        case .error, .userCancelled:
+                            print("Failed to open immersive space")
+                        @unknown default:
+                            print("Unknown result when opening immersive space")
+                        }
+                    }
                 }) {
                     Text("3D")
                         .font(.system(size: 24, weight: .bold))

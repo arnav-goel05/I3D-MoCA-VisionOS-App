@@ -13,6 +13,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.openWindow) private var openWindow
     @State private var navigate = false
+    @AppStorage("navigateToVisuospatial") private var navigateToVisuospatial = false
 
     var body: some View {
         NavigationStack {
@@ -29,7 +30,19 @@ struct ContentView: View {
                 }
             }
             .navigationDestination(isPresented: $navigate) {
-                HelpView()
+                if navigateToVisuospatial {
+                    VisuospatialView()
+                        .onAppear {
+                            navigateToVisuospatial = false // Reset the flag
+                        }
+                } else {
+                    HelpView()
+                }
+            }
+            .onAppear {
+                if navigateToVisuospatial {
+                    navigate = true
+                }
             }
             .padding()
         }

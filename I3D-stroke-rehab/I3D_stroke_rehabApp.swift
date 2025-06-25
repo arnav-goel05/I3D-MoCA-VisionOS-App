@@ -13,7 +13,7 @@ struct I3D_stroke_rehabApp: App {
     @State private var appModel = AppModel()
 
     var body: some Scene {
-        WindowGroup(id: "main") {
+        WindowGroup(id: "MainWindow") {
             ContentView()
                 .environment(appModel)
         }
@@ -41,6 +41,10 @@ struct I3D_stroke_rehabApp: App {
             } else {
                 return WindowPlacement(.utilityPanel)
             }
+        }
+        
+        ImmersiveSpace(id: "ImmersiveSpace") {
+            ImmersiveView()
         }
     }
 
