@@ -26,5 +26,6 @@ struct AnswerInputView: View {
                     .buttonTextStyle()
             }
         }
+        .padding(50)
     }
 }

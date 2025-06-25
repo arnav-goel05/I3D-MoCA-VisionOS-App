@@ -13,18 +13,18 @@ struct AttentionView: View {
     @EnvironmentObject var activityManager: ActivityManager
     
     private let tasks: [TaskItem] = [
-        TaskItem(title: "Task 1", question: "Repeat them in forward order", imageOne: nil, imageTwo: nil),
-        TaskItem(title: "Task 2", question: "Repeat them in backward order", imageOne: nil, imageTwo: nil),
-        TaskItem(title: "Task 3", question: "Tap button at each number 1", imageOne: nil, imageTwo: nil),
-        TaskItem(title: "Task 4", question: "Serial 7 subtraction starting at 100", imageOne: nil, imageTwo: nil)
+        TaskItem(title: "Task 1", question: "Repeat the numbers in forward order.", imageOne: nil, imageTwo: nil),
+        TaskItem(title: "Task 2", question: "Repeat the numbers in backward order.", imageOne: nil, imageTwo: nil),
+        TaskItem(title: "Task 3", question: "A sequence of numbers will be displayed. Tap the button 'Select Number' each time you see the number 1. Do not select the button when you see a different number.", imageOne: nil, imageTwo: nil),
+        TaskItem(title: "Task 4", question: "Count backward by 7's from 100 for 5 times and write those numbers down below.", imageOne: nil, imageTwo: nil)
     ]
     
-    let forwardOrderNumList = "2 1 8 5 4"
-    let backwardOrderNumList = "7 4 2"
     let tappingOneNumList = [6, 2, 1, 3, 7, 8, 1, 1, 9, 7, 6, 2, 1, 6, 1, 7, 4, 5, 1, 1, 1, 9, 1, 7, 9, 6, 1, 1, 2]
     let subtractionNumList = [93, 86, 79, 72, 65]
     @State private var selectedIndices: Set<Int> = []
     @State private var taskThreeIndex = 0
+    @State private var timer = Timer.publish(every: 3, on: .main, in: .common)
+        .autoconnect()
     
     var body: some View {
         ZStack {
@@ -36,48 +36,72 @@ struct AttentionView: View {
                 
                 Spacer()
                 
-                if manager.currentIndex == 0 || manager.currentIndex == 2 || manager.currentIndex == 4 || manager.currentIndex == 6 {
+                if manager.currentIndex == 0 || manager.currentIndex == 2 || manager.currentIndex == 4 {
                     let task = tasks[manager.currentIndex / 2]
                     
                     Text(task.question)
                         .subtitleTextStyle()
+                        .padding(.bottom, 50)
                     
-                    if manager.currentIndex == 0 || manager.currentIndex == 2 {
-                        Text(manager.currentIndex == 0 ? forwardOrderNumList : backwardOrderNumList)
-                            .titleTextStyle()
-                            .padding(50)
+                    if manager.currentIndex == 0 {
+                        ZStack {
+                            Text("2")
+                                .position(x: 300, y: 100)
+                                .subtitleTextStyle()
+                            Text("1")
+                                .position(x: 400, y: 100)
+                                .subtitleTextStyle()
+                            Text("8")
+                                .position(x: 500, y: 100)
+                                .subtitleTextStyle()
+                            Text("5")
+                                .position(x: 600, y: 100)
+                                .subtitleTextStyle()
+                            Text("4")
+                                .position(x: 700, y: 100)
+                                .subtitleTextStyle()
+                        }
+                        .frame(width: 1000, height: 200)
+                        .background(Color(red: 30/255, green: 44/255, blue:  56/255,))
+                        .cornerRadius(30)
+                    } else if manager.currentIndex == 2 {
+                        ZStack {
+                            Text("7")
+                                .position(x: 300, y: 100)
+                                .subtitleTextStyle()
+                            Text("4")
+                                .position(x: 400, y: 100)
+                                .subtitleTextStyle()
+                            Text("2")
+                                .position(x: 500, y: 100)
+                                .subtitleTextStyle()
+                        }
+                        .frame(width: 800, height: 200)
+                        .background(Color(red: 30/255, green: 44/255, blue:  56/255,))
+                        .cornerRadius(30)
                     }
                     
-                    if manager.currentIndex == 6 {
-                        HStack(spacing: 12) {
-                            ForEach(subtractionNumList.indices, id: \.self) { idx in
-                                Button(action: {
-                                    if selectedIndices.contains(idx) {
-                                        selectedIndices.remove(idx)
-                                    } else {
-                                        selectedIndices.insert(idx)
-                                    }
-                                }) {
-                                    Text("\(subtractionNumList[idx])")
-                                        .buttonTextStyle()
-                                        .foregroundColor(
-                                            selectedIndices.contains(idx)
-                                            ? .green
-                                            : .primary
-                                        )
-                                }
-                            }
-                        }.padding(50)
-                    }
-                
                     Button(action: {
                         manager.currentIndex += 1
                     }) {
                         Text("Proceed")
                             .buttonTextStyle()
                     }
-                } else if manager.currentIndex == 1 || manager.currentIndex == 3 {
-                    let task = tasks[(manager.currentIndex - 1) / 2]
+                    .padding(.top, 50)
+                    
+                } else if manager.currentIndex == 1 || manager.currentIndex == 3 || manager.currentIndex == 6 {
+                    let questionIndex: Int = {
+                            switch manager.currentIndex {
+                            case 6:
+                                return manager.currentIndex / 2
+                            case 1, 3:
+                                return (manager.currentIndex - 1) / 2
+                            default:
+                                fatalError("Unexpected index")
+                            }
+                        }()
+                    
+                    let task = tasks[questionIndex]
                     
                     VStack (spacing: 40) {
                         Text(task.question)
@@ -87,39 +111,33 @@ struct AttentionView: View {
                             manager.nextTask()
                         }
                     }
-                } else if manager.currentIndex == 5 {
-                    
-                    Text(tasks[2].question)
-                        .subtitleTextStyle()
-                    
-                    Text("\(taskThreeIndex + 1)th Number: \(tappingOneNumList[taskThreeIndex])")
-                        .titleTextStyle()
-                        .padding(50)
-                
-                    if taskThreeIndex < tappingOneNumList.count - 1 {
-                        HStack(spacing: 20) {
-                            Button(action: {
-                                taskThreeIndex += 1
-                            }) {
-                                Text("Select Number")
-                                    .buttonTextStyle()
-                            }
-                            Button(action: {
-                                taskThreeIndex += 1
-                            }) {
-                                Text("Next")
-                                    .buttonTextStyle()
-                            }
-                        }
-                    } else {
-                        Button(action: {
-                            manager.currentIndex += 1
-                        }) {
-                            Text("Proceed")
+                } else  if manager.currentIndex == 5 {
+                    VStack(spacing: 40) {
+                        Text(tasks[2].question)
+                            .subtitleTextStyle()
+
+                        Text("\(taskThreeIndex + 1)ᵗʰ Number: \(tappingOneNumList[taskThreeIndex])")
+                            .subtitleTextStyle()
+                            .padding(50)
+
+                        Button(action: {}) {
+                            Text("Tap 1")
                                 .buttonTextStyle()
                         }
                     }
-
+                    .onReceive(timer) { _ in
+                        if taskThreeIndex < tappingOneNumList.count - 1 {
+                            taskThreeIndex += 1
+                        } else {
+                            timer.upstream.connect().cancel()
+                            manager.currentIndex += 1
+                        }
+                    }
+                    .onAppear {
+                        taskThreeIndex = 0
+                        timer = Timer.publish(every: 1, on: .main, in: .common)
+                                   .autoconnect()
+                    }
                 } else {
                     CompletionView(completionText: "🎉 You’re done!", buttonText: "Next Task", onButtonTapped: {
                         activityManager.nextActivity(index: 4)

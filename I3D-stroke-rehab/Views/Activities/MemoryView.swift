@@ -33,14 +33,26 @@ struct MemoryView: View {
                     Text("Lets do it once again! Here are a list of words. Try your best to remember them all for now and later on in the test.")
                         .subtitleTextStyle()
                     
-                    List {
+                    ZStack {
                         Text("Face")
-                        Text("Silk")
+                            .position(x: 300, y: 100)
+                            .subtitleTextStyle()
                         Text("Church")
-                        Text("Rose")
+                            .position(x: 500, y: 100)
+                            .subtitleTextStyle()
                         Text("Red")
+                            .position(x: 700, y: 100)
+                            .subtitleTextStyle()
+                        Text("Silk")
+                            .position(x: 400, y: 200)
+                            .subtitleTextStyle()
+                        Text("Rose")
+                            .position(x: 600, y: 200)
+                            .subtitleTextStyle()
                     }
-                    .subtitleTextStyle()
+                    .frame(width: 1000, height: 300)
+                    .background(Color(red: 30/255, green: 44/255, blue:  56/255,))
+                    .cornerRadius(20)
                     
                     Button(action: {
                         manager.currentIndex += 1
@@ -61,15 +73,27 @@ struct MemoryView: View {
                     Text("Here are a list of words. Try your best to remember them all for now and later on in the test.")
                         .subtitleTextStyle()
                     
-                    List {
+                    ZStack {
                         Text("Face")
-                        Text("Silk")
+                            .position(x: 300, y: 100)
+                            .subtitleTextStyle()
                         Text("Church")
-                        Text("Rose")
+                            .position(x: 500, y: 100)
+                            .subtitleTextStyle()
                         Text("Red")
+                            .position(x: 700, y: 100)
+                            .subtitleTextStyle()
+                        Text("Silk")
+                            .position(x: 400, y: 200)
+                            .subtitleTextStyle()
+                        Text("Rose")
+                            .position(x: 600, y: 200)
+                            .subtitleTextStyle()
                     }
-                    .subtitleTextStyle()
-                
+                    .frame(width: 1000, height: 300)
+                    .background(Color(red: 30/255, green: 44/255, blue:  56/255,))
+                    .cornerRadius(30)
+                    
                     Button(action: {
                         manager.currentIndex += 1
                     }) {
