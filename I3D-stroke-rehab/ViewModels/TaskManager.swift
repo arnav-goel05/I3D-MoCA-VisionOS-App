@@ -12,8 +12,13 @@ class TaskManager: ObservableObject {
     @Published var userInput: String = ""
     @Published var backgroundColor: Color = .blue.opacity(0.2)
     @Published var show3DPainting: Bool = false
-
-    func nextTask(total: Int) {
+    @State var total: Int
+    
+    init(total: Int) {
+        self.total = total
+    }
+    
+    func nextTask() {
         currentIndex += 1
         userInput = ""
         backgroundColor = currentIndex == total ? .green.opacity(0.2) : .blue.opacity(0.2)

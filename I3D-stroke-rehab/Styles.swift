@@ -35,7 +35,7 @@ struct SubtitleTextStyle: ViewModifier {
         content
             .font(.system(size: 35, weight: .regular, design: .rounded))
             .multilineTextAlignment(.center)
-            .padding()
+            .padding(0)
     }
 }
 

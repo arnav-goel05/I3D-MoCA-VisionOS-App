@@ -6,7 +6,8 @@ import SwiftUI
 
 struct AbstractionView: View {
     
-    @StateObject private var manager = TaskManager()
+    @StateObject private var manager = TaskManager(total: 2)
+    @EnvironmentObject var activityManager: ActivityManager
     
     private let tasks: [TaskItem] = [
         TaskItem(title: "Task 1", question: "train - bicycle", imageOne: "train", imageTwo: "bicycle"),
@@ -25,7 +26,9 @@ struct AbstractionView: View {
                 Spacer()
                 
                 if manager.currentIndex >= tasks.count {
-                    CompletionView(completionText: "🎉 You’re done!", buttonText: "Next Task", destination: DelayedRecallView())
+                    CompletionView(completionText: "🎉 You’re done!", buttonText: "Next Task", onButtonTapped: {
+                        activityManager.nextActivity(index: 6)
+                    }, destination: DelayedRecallView())
                 } else {
                     let task = tasks[manager.currentIndex]
                     
@@ -48,7 +51,7 @@ struct AbstractionView: View {
                     }
                     
                     AnswerInputView(title: "Type your answer…", userInput: $manager.userInput) {
-                        manager.nextTask(total: tasks.count)
+                        manager.nextTask()
                     }
                 }
                 

@@ -62,7 +62,8 @@ struct VisuospatialView: View {
     @State private var selectedNodes: [Node] = []
     @State private var navigateToNextTask = false
     @State private var showImmersiveSpace = false
-    
+
+    @EnvironmentObject var activityManager: ActivityManager
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @Environment(\.dismissWindow) var dismissWindow
     @Environment(\.openWindow) var openWindow
@@ -235,7 +236,6 @@ struct VisuospatialView: View {
             }
             .padding()
         }
-        .navigationTitle("Visuospatial")
     }
 
     private func node(at point: CGPoint) -> Node? {
